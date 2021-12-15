@@ -2,8 +2,6 @@ require('dotenv').config();
 
 export const configNetwork = 'mainnet';
 
-export const baseURL = process.env.REACT_APP_SERVER_URL;
-
 export const userEmail = process.env.REACT_APP_USER_EMAIL;
 
 export const userPassword = process.env.REACT_APP_USER_PASSWORD;
