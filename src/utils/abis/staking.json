@@ -1,0 +1,474 @@
+{
+	"abi": [
+		{
+			"inputs": [
+				{
+					"internalType": "contract RewardERC20",
+					"name": "_tokenAddress",
+					"type": "address"
+				},
+				{
+					"internalType": "contract MmcCrossMATIC",
+					"name": "_nftAddress",
+					"type": "address"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "constructor"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": false,
+					"internalType": "address",
+					"name": "_user",
+					"type": "address"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256[]",
+					"name": "_tokenIds",
+					"type": "uint256[]"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "mintedAt",
+					"type": "uint256"
+				}
+			],
+			"name": "MintNFTBatchFinished",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": false,
+					"internalType": "address",
+					"name": "_user",
+					"type": "address"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "_tokenId",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "mintedAt",
+					"type": "uint256"
+				}
+			],
+			"name": "MintNFTFinished",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "previousOwner",
+					"type": "address"
+				},
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "newOwner",
+					"type": "address"
+				}
+			],
+			"name": "OwnershipTransferred",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "_user",
+					"type": "address"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "reward",
+					"type": "uint256"
+				}
+			],
+			"name": "RewardPaid",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "_user",
+					"type": "address"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256[]",
+					"name": "tokenIds",
+					"type": "uint256[]"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "_stakesAmount",
+					"type": "uint256"
+				}
+			],
+			"name": "StakeBatchFinished",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "_user",
+					"type": "address"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "tokenId",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "_stakesAmount",
+					"type": "uint256"
+				}
+			],
+			"name": "StakeFinished",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "_user",
+					"type": "address"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256[]",
+					"name": "tokenIds",
+					"type": "uint256[]"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "_stakesAmount",
+					"type": "uint256"
+				}
+			],
+			"name": "withdrawBatchFinished",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "_user",
+					"type": "address"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "tokenId",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "_stakesAmount",
+					"type": "uint256"
+				}
+			],
+			"name": "withdrawFinished",
+			"type": "event"
+		},
+		{
+			"inputs": [],
+			"name": "NFT",
+			"outputs": [
+				{
+					"internalType": "contract MmcCrossMATIC",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "RewardERC20Token",
+			"outputs": [
+				{
+					"internalType": "contract RewardERC20",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "tokenId",
+					"type": "uint256"
+				}
+			],
+			"name": "_exists",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "claim",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "owner",
+			"outputs": [
+				{
+					"internalType": "address",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "renounceOwnership",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_stakeholder",
+					"type": "address"
+				}
+			],
+			"name": "rewardOf",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "tokenId",
+					"type": "uint256"
+				}
+			],
+			"name": "stake",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256[]",
+					"name": "tokenIds",
+					"type": "uint256[]"
+				}
+			],
+			"name": "stakeBatch",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_stakeholder",
+					"type": "address"
+				}
+			],
+			"name": "stakeOf",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"name": "stakerActs",
+			"outputs": [
+				{
+					"internalType": "address",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"name": "stakers",
+			"outputs": [
+				{
+					"internalType": "address",
+					"name": "walletAddr",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "stakesAmount",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "rewardsAmount",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "lastUpdateTime",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "newOwner",
+					"type": "address"
+				}
+			],
+			"name": "transferOwnership",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_account",
+					"type": "address"
+				}
+			],
+			"name": "updateReward",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "updateStakeList",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "tokenId",
+					"type": "uint256"
+				}
+			],
+			"name": "withdraw",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256[]",
+					"name": "tokenIds",
+					"type": "uint256[]"
+				}
+			],
+			"name": "withdrawBatch",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		}
+	]
+}
