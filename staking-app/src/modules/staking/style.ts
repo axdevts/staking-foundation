@@ -233,7 +233,7 @@ export const InputerContainer = styled.div`
   letter-spacing: -0.2px;
   line-height: 29px;
   font-size: 1.1875rem;
-  padding: 1.25rem 0;
+  padding: 0.9rem 0;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -40,6 +40,12 @@ const Staking = () => {
   const handlePlus = () => {
     setValue(1 * value + 1);
   };
+
+  const handleStaking = () => {};
+
+  const handleWithdraw = () => {};
+
+  const handleClaim = () => {};
   return (
     <TokenHolderLayout pageTitle="Homepage">
       <HomeWrapper>
@@ -68,7 +74,7 @@ const Staking = () => {
               <Amount>
                 TOTAL STAKED: <span>XXX</span>
               </Amount>
-              <SubmitBtn>Stake Now</SubmitBtn>
+              <SubmitBtn onClick={() => handleStaking()}>Stake Now</SubmitBtn>
               <DesText>Stake Magic Mushrooms for Celium</DesText>
             </Container>
             <Container>
@@ -84,7 +90,9 @@ const Staking = () => {
                 />
                 <PlusBtn onClick={handlePlus}>+</PlusBtn>
               </InputerContainer>
-              <SubmitBtn>Confirm Withdraw</SubmitBtn>
+              <SubmitBtn onClick={() => handleWithdraw()}>
+                Confirm Withdraw
+              </SubmitBtn>
               <DesText>Withdraw your Staked Shroom(s)</DesText>
             </Container>
             <Container>
@@ -95,7 +103,9 @@ const Staking = () => {
               <Amount>
                 TOTAL REWARDS: <span>XXX</span>
               </Amount>
-              <SubmitBtn>Claim Earnings</SubmitBtn>
+              <SubmitBtn onClick={() => handleClaim()}>
+                Claim Earnings
+              </SubmitBtn>
               <DesText>Claim your rewarded Celium for staking</DesText>
             </Container>
           </ContainerGrp>

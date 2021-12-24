@@ -1,0 +1,27 @@
+node_modules/
+yarn-error.log
+.nyc_output
+coverage
+build/
+.env
+
+
+# Ignore sonnar scanner
+.scannerwork/
+
+# Ignore log
+*.log
+.github/workflows/*
+.test.xyz
+
+# Ignore tmp
+tmp/
+
+# ignore lambda zip file
+lambdaSchedular/lambdaFunc.zip
+
+**/.DS_Store
+.idea/
+
+/.vscode/
+yarn.lock
