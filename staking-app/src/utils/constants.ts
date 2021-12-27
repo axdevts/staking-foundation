@@ -111,9 +111,7 @@ export const Networks = {
   bscTestnet: '0x61',
   bscMainnet: '0x38',
   maticTestnet: '0x13881',
-  maticMainnet: '0x89',
-  polygonTestnet: '0x80001',
-  polygonMainet: '0x137'
+  maticMainnet: '0x89'
 };
 
 export const EtherscanLinks = {

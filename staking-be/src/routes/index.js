@@ -3,8 +3,8 @@ import {
   getUsersTokensController,
   mintController,
   stakingController,
-  withdrawController,
-  claimController
+  // withdrawController,
+  // claimController
 } from '../controllers'
 
 const indexRouter = express.Router()
@@ -14,9 +14,9 @@ indexRouter.post('/get-tokens', getUsersTokensController().getUserTokens)
 indexRouter.post('/mint', mintController().mintPoly)
 indexRouter.post('/staking', stakingController().staking)
 indexRouter.post('/staking-batch', stakingController().stakingBatch)
-indexRouter.post('/withdraw', withdrawController().withdraw)
-indexRouter.post('/withdraw-batch', withdrawController().withdrawBatch)
-indexRouter.post('/claim', claimController().claim)
-indexRouter.post('/claim-batch', claimController().claimBatch)
+// indexRouter.post('/withdraw', withdrawController().withdraw)
+// indexRouter.post('/withdraw-batch', withdrawController().withdrawBatch)
+// indexRouter.post('/claim', claimController().claim)
+// indexRouter.post('/claim-batch', claimController().claimBatch)
 
 export default indexRouter

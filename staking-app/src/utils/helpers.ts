@@ -335,10 +335,12 @@ export const getEtherScanLink = (): string => {
       return 'https://bscscan.com';
 
     case Networks.maticTestnet:
-      return 'http://mumbai-explorer.matic.today';
+      return 'https://matic-mumbai.chainstacklabs.com';
+    // return 'http://mumbai-explorer.matic.today';
 
     case Networks.maticMainnet:
-      return 'https://polygonscan.com';
+      return 'https://rpc-mumbai.maticvigil.com';
+    // return 'https://polygonscan.com';
 
     default:
       return 'https://etherscan.io';
@@ -431,5 +433,113 @@ export const getTokenPrecision = (token: string): string => {
         return '18';
       }
       return '6';
+  }
+};
+
+export const getStakingContractAddress = (): string => {
+  const { network } = store.getState().user;
+
+  switch (network) {
+    case Networks.mainnet:
+      return ContractAddress.mainnet.staking;
+
+    case Networks.ropsten:
+      return ContractAddress.ropsten.staking;
+
+    case Networks.bscMainnet:
+      return ContractAddress.bscMainnet.staking;
+
+    case Networks.bscTestnet:
+      return ContractAddress.bscTestnet.staking;
+
+    case Networks.maticMainnet:
+      return ContractAddress.maticMainnet.staking;
+
+    case Networks.maticTestnet:
+      return ContractAddress.maticTestnet.staking;
+
+    default:
+      return ContractAddress.maticTestnet.staking;
+  }
+};
+
+export const getCrossETHContractAddress = (): string => {
+  const { network } = store.getState().user;
+
+  switch (network) {
+    case Networks.mainnet:
+      return ContractAddress.mainnet.mmcCrossETH;
+
+    case Networks.ropsten:
+      return ContractAddress.ropsten.mmcCrossETH;
+
+    case Networks.bscMainnet:
+      return ContractAddress.bscMainnet.mmcCrossETH;
+
+    case Networks.bscTestnet:
+      return ContractAddress.bscTestnet.mmcCrossETH;
+
+    case Networks.maticMainnet:
+      return ContractAddress.maticMainnet.mmcCrossETH;
+
+    case Networks.maticTestnet:
+      return ContractAddress.maticTestnet.mmcCrossETH;
+
+    default:
+      return ContractAddress.maticTestnet.mmcCrossETH;
+  }
+};
+
+export const getCrossMaticContractAddress = (): string => {
+  const { network } = store.getState().user;
+
+  switch (network) {
+    case Networks.mainnet:
+      return ContractAddress.mainnet.mmcCrossMatic;
+
+    case Networks.ropsten:
+      return ContractAddress.ropsten.mmcCrossMatic;
+
+    case Networks.bscMainnet:
+      return ContractAddress.bscMainnet.mmcCrossMatic;
+
+    case Networks.bscTestnet:
+      return ContractAddress.bscTestnet.mmcCrossMatic;
+
+    case Networks.maticMainnet:
+      return ContractAddress.maticMainnet.mmcCrossMatic;
+
+    case Networks.maticTestnet:
+      return ContractAddress.maticTestnet.mmcCrossMatic;
+
+    default:
+      return ContractAddress.maticTestnet.mmcCrossMatic;
+  }
+};
+
+export const getRewardContractAddress = (): string => {
+  const { network } = store.getState().user;
+
+  switch (network) {
+    case Networks.mainnet:
+      return ContractAddress.mainnet.rewardERC20;
+
+    case Networks.ropsten:
+      return ContractAddress.ropsten.rewardERC20;
+
+    case Networks.bscMainnet:
+      return ContractAddress.bscMainnet.rewardERC20;
+
+    case Networks.bscTestnet:
+      return ContractAddress.bscTestnet.rewardERC20;
+
+    case Networks.maticMainnet:
+      return ContractAddress.maticMainnet.rewardERC20;
+
+    case Networks.maticTestnet:
+      return ContractAddress.maticTestnet.rewardERC20;
+
+    default:
+      return ContractAddress.maticTestnet.rewardERC20;
   }
 };

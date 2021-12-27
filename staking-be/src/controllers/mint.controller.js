@@ -42,6 +42,7 @@ export const mintController = () => {
             })
 
           console.log('data >>>>', data)
+          return res.status(200).json({ success: true })
         } catch (error) {
           console.log(error, i)
           await Users.update({ status: 'failed' }, { where: { tokenIds: i } });

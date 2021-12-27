@@ -39,30 +39,23 @@ export const stakingController = () => {
 
   const stakingBatch = async (req, res, enxt) => {
     const userAddr = req.body.walletAddress
+    var tokenList = req.body.tokenList
 
     const web3Mumbai = new Web3(new Web3.providers.HttpProvider(mumbaiNet))
     const stakingContract = new web3Mumbai.eth.Contract(stakingAbi, stakingAddr)
     let data = await Users.findAll({ where: { userAddr } })
 
-    let nftTokenIDs = []
+    try {
+      const stakingData = await stakingContract.method.stakeBatch(tokenList)
+        .send({
+          from: userAddr,
+          gasPrice: RELAYER_GAS_PRICE,
+          gas: RELAYER_GAS,
+        })
+      console.log('list nfts', stakingData)
 
-    if (data.length > 0) {
-      for (let i = 0; i < data.length; i++) {
-        nftTokenIDs.push(data[i].tokenIds)
-      }
-
-      try {
-        const stakingData = await stakingContract.method.stakeBatch(nftTokenIDs)
-          .send({
-            from: userAddr,
-            gasPrice: RELAYER_GAS_PRICE,
-            gas: RELAYER_GAS,
-          })
-        console.log('list nfts', stakingData)
-
-      } catch (error) {
-        console.log(error)
-      }
+    } catch (error) {
+      console.log(error)
     }
   }
 

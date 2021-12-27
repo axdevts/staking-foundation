@@ -23,13 +23,13 @@ export const withdrawController = () => {
 
     if (data.length > 0) {
       try {
-        const stakingData = await stakingContract.method.withdraw(data.tokenIds)
+        const res = await stakingContract.method.withdraw(data.tokenIds)
           .send({
             from: userAddr,
             gasPrice: RELAYER_GAS_PRICE,
             gas: RELAYER_GAS,
           })
-        console.log('list nfts', stakingData)
+        console.log('list nfts', res)
 
       } catch (error) {
         console.log(error)
@@ -37,32 +37,23 @@ export const withdrawController = () => {
     }
   }
 
-  const withdrawBatch = async (req, res, enxt) => {
+  const withdrawBatch = async (req, res, next) => {
     const userAddr = req.body.walletAddress
+    var tokenList = req.body.tokenList
 
     const web3Mumbai = new Web3(new Web3.providers.HttpProvider(mumbaiNet))
     const stakingContract = new web3Mumbai.eth.Contract(stakingAbi, stakingAddr)
-    let data = await Users.findAll({ where: { userAddr } })
+    try {
+      const data = await stakingContract.method.withdrawBatch(tokenList)
+        .send({
+          from: userAddr,
+          gasPrice: RELAYER_GAS_PRICE,
+          gas: RELAYER_GAS,
+        })
+      console.log('list nfts', data)
 
-    let nftTokenIDs = []
-
-    if (data.length > 0) {
-      for (let i = 0; i < data.length; i++) {
-        nftTokenIDs.push(data[i].tokenIds)
-      }
-
-      try {
-        const stakingData = await stakingContract.method.withdrawBatch(nftTokenIDs)
-          .send({
-            from: userAddr,
-            gasPrice: RELAYER_GAS_PRICE,
-            gas: RELAYER_GAS,
-          })
-        console.log('list nfts', stakingData)
-
-      } catch (error) {
-        console.log(error)
-      }
+    } catch (error) {
+      console.log(error)
     }
   }
 

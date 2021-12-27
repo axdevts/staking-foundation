@@ -149,70 +149,70 @@ export const getStakingContract = () => {
   const { network } = store.getState().user;
 
   switch (network) {
-    case Networks.polygonTestnet:
+    case Networks.maticTestnet:
       return new wallet.web3.eth.Contract(
         stakingAbi['abi'],
-        ContractAddress.polygonTestnet.staking
+        ContractAddress.maticTestnet.staking
       );
 
-    case Networks.polygonMainet:
+    case Networks.maticMainnet:
       return new wallet.web3.eth.Contract(
         stakingAbi['abi'],
-        ContractAddress.polygonMainnet.staking
+        ContractAddress.maticMainnet.staking
       );
 
     default:
       return new wallet.web3.eth.Contract(
         stakingAbi['abi'],
-        ContractAddress.polygonTestnet.staking
+        ContractAddress.maticTestnet.staking
       );
   }
 };
 
-export const getMmcCrossETHContract = () => {
+export const getCrossETHContract = () => {
   const { network } = store.getState().user;
 
   switch (network) {
-    case Networks.polygonTestnet:
+    case Networks.maticTestnet:
       return new wallet.web3.eth.Contract(
         mmcCrossETHAbi['abi'],
-        ContractAddress.polygonTestnet.mmcCrossETH
+        ContractAddress.maticTestnet.mmcCrossETH
       );
 
-    case Networks.polygonMainet:
+    case Networks.maticMainnet:
       return new wallet.web3.eth.Contract(
         usdcAbi['abi'],
-        ContractAddress.polygonMainnet.mmcCrossETH
+        ContractAddress.maticMainnet.mmcCrossETH
       );
 
     default:
       return new wallet.web3.eth.Contract(
         mmcCrossETHAbi['abi'],
-        ContractAddress.polygonTestnet.mmcCrossETH
+        ContractAddress.maticTestnet.mmcCrossETH
       );
   }
 };
 
-export const getMmcCrossMaticContract = () => {
+export const getCrossMaticContract = () => {
   const { network } = store.getState().user;
 
   switch (network) {
-    case Networks.polygonTestnet:
+    case Networks.maticTestnet:
       return new wallet.web3.eth.Contract(
         mmcCrossMaticAbi['abi'],
-        ContractAddress.polygonTestnet.mmcCrossMatic
+        ContractAddress.maticTestnet.mmcCrossMatic
       );
 
-    case Networks.polygonMainet:
+    case Networks.maticMainnet:
       return new wallet.web3.eth.Contract(
         mmcCrossMaticAbi['abi'],
-        ContractAddress.polygonMainnet.mmcCrossMatic
+        ContractAddress.maticMainnet.mmcCrossMatic
       );
 
     default:
       return new wallet.web3.eth.Contract(
         mmcCrossMaticAbi['abi'],
-        ContractAddress.polygonTestnet.mmcCrossMatic
+        ContractAddress.maticTestnet.mmcCrossMatic
       );
   }
 };
@@ -221,22 +221,22 @@ export const getRewardERC20Contract = () => {
   const { network } = store.getState().user;
 
   switch (network) {
-    case Networks.polygonTestnet:
+    case Networks.maticTestnet:
       return new wallet.web3.eth.Contract(
         rewardERC20Abi['abi'],
-        ContractAddress.polygonTestnet.rewardERC20
+        ContractAddress.maticTestnet.rewardERC20
       );
 
-    case Networks.polygonMainet:
+    case Networks.maticMainnet:
       return new wallet.web3.eth.Contract(
         rewardERC20Abi['abi'],
-        ContractAddress.polygonMainnet.rewardERC20
+        ContractAddress.maticMainnet.rewardERC20
       );
 
     default:
       return new wallet.web3.eth.Contract(
         rewardERC20Abi['abi'],
-        ContractAddress.polygonTestnet.rewardERC20
+        ContractAddress.maticTestnet.rewardERC20
       );
   }
 };

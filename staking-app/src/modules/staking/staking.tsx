@@ -46,6 +46,9 @@ const Staking = () => {
   const handleWithdraw = () => {};
 
   const handleClaim = () => {};
+
+  // useEffect(() => {}, []);
+
   return (
     <TokenHolderLayout pageTitle="Homepage">
       <HomeWrapper>

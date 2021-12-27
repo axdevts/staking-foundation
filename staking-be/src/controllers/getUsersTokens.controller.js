@@ -13,7 +13,6 @@ export const getUsersTokensController = () => {
   const mmcAddr = ContractAddress.mainnet.mmc
 
   const getUsersTokenIds = async (req, res, next) => {
-    const userAddr = req.body.walletAddress
 
     const web3MainEth = new Web3(new Web3.providers.HttpProvider(ethMainNet))
     const mmcContract = new web3MainEth.eth.Contract(mmcAbi, mmcAddr)
@@ -28,7 +27,7 @@ export const getUsersTokensController = () => {
         if (!data) {
           data = await Users.create({ walletAddress, tokenIds });
         } else {
-          return res.status(400).json({ error: 'WalletAddress already registered.' })
+          return res.status(400).json({ error: 'Request Failed.' })
         }
 
       }
@@ -38,7 +37,21 @@ export const getUsersTokensController = () => {
     }
   }
 
-  const getUserTokens = () => {
+  const getUserTokens = async (req, res, next) => {
+    const walletAddress = req.body.walletAddress
+
+    if (!walletAddress) {
+      return res.status(400).json({ error: 'Walletaddress is incorrect' })
+    } else {
+      let data = await Users.findAll({ where: { walletAddress } })
+
+      if (!data) {
+        return res.status(400).json({ error: 'Get tokens failed' })
+      } else {
+        return res.status(200).json({ data: data })
+      }
+
+    }
 
   }
 
