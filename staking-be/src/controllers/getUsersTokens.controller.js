@@ -38,19 +38,27 @@ export const getUsersTokensController = () => {
   }
 
   const getUserTokens = async (req, res, next) => {
-    const walletAddress = req.body.walletAddress
+    const walletAddress = req.body.userAddress
+    console.log(walletAddress)
 
     if (!walletAddress) {
       return res.status(400).json({ error: 'Walletaddress is incorrect' })
     } else {
       let data = await Users.findAll({ where: { walletAddress } })
+      let tokenList = []
 
-      if (!data) {
-        return res.status(400).json({ error: 'Get tokens failed' })
-      } else {
-        return res.status(200).json({ data: data })
+      if (data.length > 0) {
+        for (let i = 0; i < data.length; i++) {
+          tokenList.push(data[i].tokenIds)
+        }
       }
 
+      if (!data) {
+        return res.status(400).json({ error: 'This useraddress has no any tokens.' })
+      } else {
+        console.log('token Id list -----', tokenList)
+        return res.status(200).json({ data: tokenList })
+      }
     }
 
   }

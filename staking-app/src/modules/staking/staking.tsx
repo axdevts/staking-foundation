@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 import { TokenHolderLayout } from '../../layouts';
 import {
   ConnectBtn,
@@ -25,11 +26,13 @@ import {
 } from './style';
 import { Loader, Modal, CustomNumberInput } from '../../components';
 import { WarningText } from '../../components/style';
+import { baseURL } from '../../utils';
 
 const Staking = () => {
   const [showModal, setShowModal] = useState(false);
   const [value, setValue] = useState(0);
-  const { userRegistered, errMessage, duplicatedMessage } = useSelector(
+  const [tokenList, setTokenList] = useState([]);
+  const { walletConnected, errMessage, userAddress } = useSelector(
     (state: any) => state.user
   );
 
@@ -41,13 +44,29 @@ const Staking = () => {
     setValue(1 * value + 1);
   };
 
-  const handleStaking = () => {};
+  const handleStaking = () => {
+    setShowModal(true);
+  };
 
-  const handleWithdraw = () => {};
+  const handleWithdraw = () => {
+    setShowModal(true);
+  };
 
   const handleClaim = () => {};
 
-  // useEffect(() => {}, []);
+  useEffect(() => {
+    async function getTokens() {
+      const response = await axios.post(`${baseURL}/get-tokens`, {
+        userAddress: userAddress
+      });
+
+      setTokenList(response?.data?.data);
+
+      console.log('res >>>>>', tokenList);
+    }
+
+    getTokens();
+  }, [walletConnected]);
 
   return (
     <TokenHolderLayout pageTitle="Homepage">
@@ -112,11 +131,9 @@ const Staking = () => {
               <DesText>Claim your rewarded Celium for staking</DesText>
             </Container>
           </ContainerGrp>
-          {errMessage && errMessage.length > 0 && (
-            <Modal show={showModal} closeModal={() => setShowModal(false)}>
-              <WarningText>{errMessage}</WarningText>
-            </Modal>
-          )}
+          <Modal show={showModal} closeModal={() => setShowModal(false)}>
+            <WarningText>{tokenList}</WarningText>
+          </Modal>
         </MainContainer>
       </HomeWrapper>
     </TokenHolderLayout>

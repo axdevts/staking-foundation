@@ -1,7 +1,7 @@
 import {
-  STAKE_SEND_START,
-  STAKE_SEND_SUCCESS,
-  STAKE_SEND_FAILURE
+  CLAIM_TOKENS_START,
+  CLAIM_TOKENS_FAILURE,
+  CLAIM_TOKENS_SUCCESS
 } from '../actions';
 
 const initialState = {
@@ -15,19 +15,19 @@ const initialState = {
   errMessage: null
 };
 
-const stakeReducer = (state = initialState, action: any) => {
+const claimReducer = (state = initialState, action: any) => {
   switch (action.type) {
-    case STAKE_SEND_START:
+    case CLAIM_TOKENS_START:
       return {
         ...state
       };
 
-    case STAKE_SEND_SUCCESS:
+    case CLAIM_TOKENS_SUCCESS:
       return {
         ...state
       };
 
-    case STAKE_SEND_FAILURE:
+    case CLAIM_TOKENS_FAILURE:
       return {
         ...state
       };
@@ -37,4 +37,4 @@ const stakeReducer = (state = initialState, action: any) => {
   }
 };
 
-export default stakeReducer;
+export default claimReducer;

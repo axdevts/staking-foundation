@@ -1,8 +1,8 @@
-import { Fragment } from "react";
-import { Confirm, Processing, Success } from "./components";
-import { StakeSteps } from "../../utils";
-import { useSelector, useDispatch } from "react-redux";
-import { stakeToken } from "../../logic/actions";
+import { Fragment } from 'react';
+import { Confirm, Processing, Success } from './components';
+import { StakeSteps } from '../../utils';
+import { useSelector, useDispatch } from 'react-redux';
+import { stakeToken } from '../../logic/actions';
 
 interface Props {
   closeModal: () => void;
@@ -22,7 +22,7 @@ const StakeModal = (props: Props) => {
 
   const confirmTransaction = async (): Promise<void> => {
     if (walletConnected) {
-      dispatch(stakeToken(token, tokenAmount, userAddress));
+      dispatch(stakeToken(userAddress, tokenAmount));
     }
   };
 

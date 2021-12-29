@@ -1,7 +1,7 @@
 import {
-  STAKE_SEND_START,
-  STAKE_SEND_SUCCESS,
-  STAKE_SEND_FAILURE
+  WITHDRAW_TOKEN_START,
+  WITHDRAW_TOKEN_SUCCESS,
+  WITHDRAW_TOKEN_FAILURE
 } from '../actions';
 
 const initialState = {
@@ -15,21 +15,22 @@ const initialState = {
   errMessage: null
 };
 
-const stakeReducer = (state = initialState, action: any) => {
+const withdrawReducer = (state = initialState, action: any) => {
   switch (action.type) {
-    case STAKE_SEND_START:
+    case WITHDRAW_TOKEN_START:
       return {
         ...state
       };
 
-    case STAKE_SEND_SUCCESS:
+    case WITHDRAW_TOKEN_SUCCESS:
       return {
         ...state
       };
 
-    case STAKE_SEND_FAILURE:
+    case WITHDRAW_TOKEN_FAILURE:
       return {
-        ...state
+        ...state,
+        errMessage: 'not available'
       };
 
     default:
@@ -37,4 +38,4 @@ const stakeReducer = (state = initialState, action: any) => {
   }
 };
 
-export default stakeReducer;
+export default withdrawReducer;

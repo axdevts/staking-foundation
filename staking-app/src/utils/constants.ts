@@ -2,9 +2,8 @@ require('dotenv').config();
 
 export const configNetwork = 'mainnet';
 
-export const userEmail = process.env.REACT_APP_USER_EMAIL;
-
-export const userPassword = process.env.REACT_APP_USER_PASSWORD;
+export const baseURL =
+  process.env.REACT_APP_SERVER_URL || 'http://127.0.0.1:8080/api';
 
 export const Paths = {
   homepage: '/',
